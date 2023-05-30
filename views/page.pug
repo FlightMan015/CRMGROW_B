@@ -1,0 +1,15 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title #{user.user_name}
+  base(href='/')
+  meta(name='viewport', content='width=device-width, initial-scale=1, minimun-scale=1.0, maximum-scale=1.0')  
+  link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+  meta(property='og:title', content=`${(page.meta && page.meta.title) || page.title||''}`)
+  meta(property='og:description', content=`${page.meta.description || 'Description'}`)
+  meta(property='og:image:width', content='600')
+  meta(property='og:image:height', content='300')
+  meta(property='og:image', content=`${(page.meta && page.meta.image||'')}`)
+  style!= page.style
+body!= page.html
+  

@@ -1,0 +1,52 @@
+meta(charset='UTF-8')
+link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+style(type='text/css').
+  
+  body{
+      background-color: rgb(250, 250, 250);
+  }
+      .container{
+      background-color: white;
+      max-width: 768px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0px 0px 20px gainsboro;
+      text-align: center;
+      padding: 30px;
+      margin-top: 150px;
+  }
+  .button{
+      border-bottom: 2px solid #006be4;
+      box-shadow: inset 0 1px 0px #4b9fff, 0 1px 3px rgba(0,0,0,0.05);
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem 1.125rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      border-radius: 0.2rem;
+      background-color: #1884FF;
+      margin-top: 40px;
+      border-color: #1884FF;
+      border: none;
+  }
+  .button:focus{
+    border: none;
+  }
+  .subscribe-content {
+    display: blok;
+  }
+  .unsubscribe-content {
+    display: blok;
+  }
+  .content-hide {
+    display: none;
+  }
+  
+.container
+  #subscribe-content
+    h3 Please click the button below to unsubscribe.
+    button.button Unsubscribe me
+  .content-hide#unsubscribe-content
+    h3 You have successfully unsubscribed.
+  script(type='text/javascript' src='./assets/js/jquery.js')
+  script(type='text/javascript' src='./assets/js/unsubscribe.js')

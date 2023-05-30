@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Report</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .email-container {
+            max-width: 800px;
+            table-layout: fixed;
+        }
+        .invite-user {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: Arial;
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .invite-time {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: 'Arial';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .watch-description {
+            color: #101336;
+            font-family: Arial;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 30px;
+            padding-bottom: 35px;
+        }
+        .watch-description a {
+            font-size: 24px;
+        }
+        .email-open-title {
+            opacity: 0.5;
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .icon-user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            font-family: 'Nunito';
+            font-weight: normal;
+            border-radius: 50%;
+            color: #ffffff;
+            background-color: #0000FF;
+            letter-spacing: 0;
+            line-height: 18px;
+        }
+        .contact-name {
+            font-size: 16px;
+        }
+        .email-open-detail {
+            color:#101336;
+            font-family: 'Nunito';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 32px;
+        }
+        .footer-text {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .btn-redirect {
+            background-color: #ffffff;
+            border: 1px solid #0000ff;
+            border-radius: 3px;
+            color: #0000ff;
+            font-family: 'Nunito';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            padding: 5px 10px;
+            text-align: center;
+        }
+        .td-facebook {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #eaeaf0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 15px 0 5px;
+        }
+        .btn-facebook {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .footer-terms {
+            color: #0000ff;
+            font-family: 'Nunito';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 22px;
+            padding: 0 8px;
+            border-left: 1px solid #eaeaf0;
+            border-right: 1px solid #eaeaf0;
+            margin: 0 8px;
+        }
+        p {
+            margin: 0;
+        }
+        a {
+            color: #0000ff;
+            font-size: 14px;
+            font-family: 'Arial';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 30px;
+            text-decoration: none;
+        }
+        hr {
+            border: 1px solid #eaeaf0;
+            margin: 10px 0;
+        }
+        @media screen and (max-width: 575px) {
+            .footer-terms {
+                font-size: 12px;
+            }
+            .footer-text, .footer-link{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body bgcolor="#f8f8fd" style="margin: 0;">
+<table class="email-container" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+    <tr>
+        <td>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <td align="center" style="padding-top: 56px; padding-bottom: 40px;">
+                        <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-40px.png" width="228" height="37" alt="logo">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 50px; padding-right: 50px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                                <td style="padding-bottom: 10px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td class="invite-user">
+                                                                    <span>
+                                                                        Hi {{user_name}},
+                                                                    </span>
+                                            </td>
+                                            <td align="right" class="invite-time">
+                                                                    <span>
+                                                                        {{created_at}}
+                                                                    </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="watch-description">
+                                    The following activities and followups have be done today.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table style="margin-bottom: 30px;">
+                                        {{content}}
+                                    </table>
+                                </td>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#f8f8fd" style="padding-left: 50px; padding-right: 50px; padding-bottom: 50px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td style="padding-top: 40px">
+                                                <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-24px.png" width="142" height="23">
+                                            </td>
+                                            <td align="right" style="padding-top: 40px">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="footer-text" style="color: #0000ff;">
+                                                            Follow us on
+                                                        </td>
+                                                        <td class="td-facebook">
+                                                            <a class="btn-facebook" href="{{facebook_url}}" target="_blank"><img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/facebook.png" alt="logo"></a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn-redirect" href="{{login_url}}">
+                                                                Redirect to login
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td class="footer-text">
+                                                @ 2021 All rights reserved.
+                                            </td>
+                                            <td class="footer-link" align="right">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{terms_url}}" class="footer-terms" style="color:#0000ff;">Terms & Conditions</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{privacy_url}}" class="footer-terms" style="color:#0000ff;">Privacy Policy</a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{unsubscription_url}}" class="footer-text" style="opacity:0.5;font-size:12px;">Unsubscribe</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

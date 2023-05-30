@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .email-container {
+            max-width: 800px;
+            table-layout: fixed;
+        }
+        .invite-user {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: Arial;
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .invite-time {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: 'Arial';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .notification-title {
+            padding-bottom: 25px;
+            color: #101336;
+            font-family: Arial;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .notification-body {
+            border: 2px solid #D10058;
+            border-radius: 6px;
+            background-color:rgba(209,0,88,0.05);
+        }
+        .icon-times {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            background-color: #D10058;
+        }
+        i.fa-times {
+            font-size: 20px;
+            color: #ffffff;
+            padding-top: 5px;
+        }
+        .payment-status {
+            width: 295px;
+            display: inline-block;
+            color: #D10058;
+            font-family: Arial;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 28px;
+            padding-left: 5px;
+        }
+        .payment-info-title {
+            color: #000000;
+            font-family: Arial;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 28px;
+            padding-top: 30px;
+        }
+        .payment-info-sub-title {
+            opacity: 0.5;
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 22px;
+            padding-top: 15px;
+        }
+        .payment-info-sub-body {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 32px;
+        }
+        .description {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 32px;
+            margin-top: 40px;
+        }
+        .support {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        p {
+            margin: 0;
+        }
+        .footer-text {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+    </style>
+</head>
+<body bgcolor="#f8f8fd" style="margin: 0;">
+    <table class="email-container" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding-top: 56px; padding-bottom: 40px;">
+                                    <img src="./assets/img/crmgrow-logo-40px.png" width="228" height="37">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 50px; padding-right: 50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-bottom: 10px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="invite-user">
+                                                                    <span>
+                                                                        Welcome {{user_name}},
+                                                                    </span>
+                                                                </td>
+                                                                <td align="right" class="invite-time">
+                                                                    <span>
+                                                                        20:04 8 April 2020
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="notification-title">
+                                                    <span>Payment notification!</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="notification-body">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="padding-top: 30px; padding-bottom: 30px;">
+                                                                    <p style="display: flex; align-items: center; justify-content: center;">
+                                                                        <span class="icon-times">
+                                                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                                                        </span>
+                                                                        <span class="payment-status">Your monthly payment has failed. Credit card was denied!</span>
+                                                                    </p>
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="payment-info-title">Allocation</td>
+                                                                <td class="payment-info-title">Payment information</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="payment-info-sub-title">AMOUNT</td>
+                                                                <td class="payment-info-sub-title">FROM</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="payment-info-sub-body" style="font-weight: bold;">$50,00</td>
+                                                                <td class="payment-info-sub-body">Credit Card</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="payment-info-sub-title">INVOICE</td>
+                                                                <td class="payment-info-sub-title">CARD NUMBER</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="payment-info-sub-body" style="color: #0000FF; font-weight: bold; text-decoration: underline;">#12481023</td>
+                                                                <td class="payment-info-sub-body">****4575</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="description">Thank you for being valued user of our platform!</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="support">CRMgrow Team</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#f8f8fd" style="padding-left: 50px; padding-right: 50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-top: 40px; padding-bottom: 20px;">
+                                                    <img src="./assets/img/crmgrow-logo-24px.png" width="142" height="23">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 16px;">
+                                                    <p class="footer-text">
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 51px;">
+                                                    <p class="footer-text">
+                                                        All rights reserved.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

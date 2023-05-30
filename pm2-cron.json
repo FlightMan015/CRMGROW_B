@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "Cron Admin",
+      "script": "./bin/admin.js"
+    },
+    {
+      "name": "Cron Regular",
+      "script": "./bin/cron.js"
+    }
+  ]
+}

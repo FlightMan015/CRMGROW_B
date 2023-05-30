@@ -1,0 +1,449 @@
+.view-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    position: relative;
+}
+
+.view-container .description {
+    margin-top: 20px;
+}
+
+.view-container .description .desc-title {
+    font-size: 3rem;
+    color: #040054;
+    text-align: center;
+}
+
+.view-container .description .desc-content {
+    font-size: 18px;
+    color: #b6b5cd;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.user-information {
+    margin-top: 20px;
+    background-color: #8b8d98;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-information img {
+    margin-right: 30px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+.user-information .info {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.user-information * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.user-information hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 5px;
+    background-color: #0006ff;
+    width: 100px;
+    border: none;
+    margin-left: 0px;
+}
+
+.user-information .icon {
+    width: 30px;
+    display: inline-block;
+    background-color: white;
+    margin: 0px 10px;
+}
+
+.icon {
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center center;
+    -webkit-mask-position: center center;
+    background: gray;
+    width: 20px;
+    height: 20px;
+  }
+  .icon-envelope {
+    -webkit-mask-image: url(../icons/email.svg);
+    mask-image: url(../icons/email.svg);
+    width: 30px;
+    display: inline-block;
+    background-color: white;
+    margin: 0px 10px;
+  }
+  
+  .icon-phone {
+    -webkit-mask-image: url(../icons/phone.svg);
+    mask-image: url(../icons/phone.svg);
+    width: 30px;
+    display: inline-block;
+    background-color: white;
+    margin: 0px 10px;
+  }
+  
+  /* .icon-down {
+    -webkit-mask-image: url(../icons/arrow_down.svg);
+    mask-image: url(../icons/arrow_down.svg);
+    width: 10px;
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 149px;
+  } */
+  
+.video-js .vjs-big-play-button{
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+}
+  
+.stick-bar{
+    display: flex;
+    background-image: linear-gradient(90deg, #2d52a2, #2a6ae4);
+    box-shadow: 1px 1px 10px 2px rgba(29, 72, 154, 0.47);
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: auto;
+    z-index: 9000;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.stick-bar .name{
+    font-size: 28px;
+    line-height: 32px;
+    color: #fff;
+}
+
+.stick-bar .phone{
+    padding-top: 6px;
+    display: flex;
+    justify-content: center;
+}
+.stick-bar .cell_phone{
+    margin-bottom: 0px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #f2f5fa;
+}
+
+.stick-bar .cell_phone:hover{
+    text-decoration: none;
+}
+
+.stick-bar .email{
+    padding-top: 6px;
+    display: flex;
+    justify-content: center;
+}
+
+.stick-bar .user-email{
+    margin-bottom: 0px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #f2f5fa;
+}
+
+.stick-bar .user-email:hover{
+    text-decoration: none;
+}
+
+.stick-bar .link{
+    padding: 8px 18px;
+    border-radius: 40px;
+    background-color: #fff;
+    font-family: Montserrat, sans-serif;
+    color: #1d489a;
+    font-size: 1em;
+    display: block;
+    max-width: 150px;
+}
+
+.stick-bar .link:hover{
+    text-decoration: none;
+}
+
+.stick-bar .dropdown-toggle{
+    position: relative;
+    padding: 9px 60px;
+    border-radius: 44px;
+    background-color: #fff;
+}
+
+.contact-info-wrapper{
+    display: flex;
+}
+
+.contact-info-dropdown{
+    display: none;
+}
+
+a.dropdown-item{
+    display: block;
+    text-align: center;
+}
+
+.open > .dropdown-menu {
+    width: 190px;
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .stick-bar .link{
+        padding: 8px 10px;
+    }
+    .stick-bar .email{
+        padding-top: 9px;
+    }
+    .stick-bar .user-email{
+        font-size: 15px;
+    }
+    
+    .stick-bar .phone{
+        padding-top: 9px;
+    }
+    
+    .stick-bar .cell_phone{
+        font-size: 15px;
+    }
+    .stick-bar .name{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .stick-bar{
+        display: block;
+    }
+    .user-information {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-information img {
+        margin-right: auto;
+        margin-left: auto;
+        width: 150px;
+        height: 150px;
+    }
+    .user-information .info{
+        font-size: 2rem;
+    }
+    .user-information hr{
+        display: none;
+    }
+    .user-information .info i{
+        width: 24px;
+    }
+
+    .view-container .description .desc-title{
+        font-size: 2.2rem;
+    }
+    .view-container .description .desc-content{
+        font-size: 1.4rem;
+    }
+    .contact-info-wrapper{
+        display: none;
+    }
+    .contact-info-dropdown{
+        display: block;
+        width: fit-content;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+
+.prev{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    border: none;
+    background: #555;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    filter: opacity(0.1);
+}
+
+.pdf-controls{
+    /* position: relative; */
+    height: 60px;
+    display: none;
+    /* max-width: 600px; */
+    /* margin: auto; */
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    max-width: unset;
+    left: 0px;
+    z-index: 10;
+}
+
+.pdf-controls.enable{
+    display: block;
+}
+
+.page-status{
+    display: none;
+}
+
+.page-status.enable{
+    display: block;
+}
+
+.prev > .icon{
+    display: block;
+    background-color: transparent;
+    width: 36px;
+    height: 36px;
+    margin-left: 0px;
+    border-left: 2px solid white;
+    border-top: 2px solid white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.next{
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    border: none;
+    background: #555;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    text-align: center;
+    filter: opacity(0.1);       
+}
+
+.next > .icon{
+    display: block;
+    transform: rotate(45deg);
+    background-color: transparent;
+    width: 36px;
+    height: 36px;
+    margin-left: 5px;
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+} 
+
+.page-status{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 36px;
+    line-height: 36px;
+}
+
+.page-status .page{
+    padding: 2px 5px;
+    border-radius: 2px;
+    color: black;
+    min-width: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+}
+
+.prev{
+    filter: opacity(0.7);
+}
+
+
+.next{
+    filter: opacity(0.7);
+}
+
+.pdf-toolbar{
+    display: none;
+}
+
+.loader{
+    width: 100px;
+    height: 100px;
+    border: 8px solid #6c757d;
+    border-top: 8px solid transparent;
+    border-radius: 50%;
+    margin: 100px auto;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+#viewer:not(.enable) .pdf-outerdiv {
+    transform: scale(1)!important;
+    width: 100%!important;
+    left: 0px!important;
+    padding: 0px!important;
+    min-height: 300px!important;
+}
+
+#viewer:not(.enable) .pdf-outerdiv .pdf-viewer{
+    width: calc(100% - 5px)!important;
+    left: 0px!important;
+    min-height: 260px!important;
+}
+
+#viewer:not(.enable) .pdf-outerdiv .pdf-viewer .pdf-loading{
+    top: 0px!important;
+}
+
+@media screen and (max-width: 800px) {
+    .view-container {
+        margin-top: 100px;
+    }
+}
+
+
+body {
+    min-height: 100vh;
+    padding: 10px 0px 100px 0px;
+    position: relative;
+}
+.footer {
+    padding: 15px;
+    background: #f8f8f8;
+    font-size: 10px;
+    color: #b2b2b2;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+.footer-desc {
+    margin-bottom: 0px;
+}

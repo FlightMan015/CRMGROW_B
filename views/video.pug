@@ -1,0 +1,105 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title #{user.user_name}
+  base(href='/')
+  meta(name='viewport', content='width=device-width, initial-scale=1, minimun-scale=1.0, maximum-scale=1.0')
+  link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+  meta(property='og:title', content=`${video.title||''}`)
+  meta(property='og:description', content=`${video.description || ''}`)
+  meta(property='og:image:width', content='600')
+  meta(property='og:image:height', content='300')
+  meta(property='og:image', content=`${video.thumbnail||''}`)
+  link(rel='stylesheet', type='text/css', href='./assets/css/bootstrap.css')
+  link(rel='stylesheet', type='text/css', href='./assets/css/video.css')
+  //- link(rel='stylesheet', type='text/css', href='./assets/plugins/video/video-js.min.css')
+  //- script(type='text/javascript', src='./assets/plugins/video/video.min.js')
+  link(rel='stylesheet', type='text/css', href='./assets/plugins/plyr/plyr.css')
+  script(type='text/javascript', src='./assets/plugins/plyr/plyr.js')
+  script(type='text/javascript', src='/socket.io/socket.io.js')
+body(class=capture_dialog && !capture_delay ? 'is_protected' : '')
+.stick-bar.row
+  .col-lg-3.col-md-3.col-sm-3.col-xs-12.d-flex.justify-content-center.name-wrapper
+    .name(title=user.user_name) #{user.user_name}
+    .profile-bar
+      a.facebook(class=social_link['facebook']?'d-block':'d-none' href=social_link['facebook']) 
+        i.icon.icon-facebook
+      a.twitter(class=social_link['twitter']?'d-block':'d-none' href=social_link['twitter']) 
+        i.icon.icon-twitter
+      a.linkedin(class=social_link['linkedin']?'d-block':'d-none' href=social_link['linkedin']) 
+        i.icon.icon-linkedin
+  .col-lg-9.col-md-9.col-sm-9.contact-info-wrapper
+    .col-lg-4.col-md-4.phone
+      i.icon.icon-phone
+      a.cell_phone(href=`tel:${user.cell_phone}`) 
+        span #{user.cell_phone}
+    .col-lg-5.col-md-5.email
+      i.icon.icon-envelope
+      a.user-email(href=`mailto:${user.email}`) #{user.email}
+    .col-lg-3.col-md-3 
+      a.link(href=`${user.learn_more}`) Learn More
+  .dropdown.contact-info-dropdown
+    button.btn.dropdown-toggle(type="button", data-toggle="dropdown") Contact Me
+      i.icon.icon-down
+    .dropdown-menu
+      a.dropdown-item(href=`tel:${user.cell_phone}`) Call my phone
+      a.dropdown-item(href=`mailto:${user.email}`)  Email me
+      a.dropdown-item(href=`${user.learn_more}`) Learn more
+.view-container.container
+  //- video#material-video.video-js(controls='', preload='true', playsinline='',  poster=`${video.thumbnail}`, data-setup='{}')
+  //-   source(src=`${video.url}`, type=`${video.type}`)
+  if video.type === 'youtube' || video.type === 'vimeo'
+    div#player(data-plyr-provider=`${video.type}` data-plyr-embed-id=`${video.url}`)
+  else 
+    video#player(poster=`${video.thumbnail}`, autoplay, playsinline, preload, controls, name="media")
+      source(src=`${video.url}`, type=`video/mp4`)
+  .description
+    .desc-title
+      | #{video.title}
+    .desc-content
+      | #{video.description}
+.footer
+  p.footer-desc.container
+   | The statements and opinions contained in this advertisement are solely those of the individual author and do not necessarily reflect the positions or opinions of eXp Realty, LLC, or its subsidiaries or affiliates (the “Company”). The Company does not assume any responsibility for, nor does it warrant the accuracy, completeness or quality of the information provided.
+.modal-backdrop(class=capture_dialog && !capture_delay ? 'show' : '')
+#myModal.modal(class=capture_dialog && !capture_delay ? 'show' : '')
+  .modal-dialog
+    .modal-content.p-4.info-step
+      .modal-body
+        form#info-form
+          .form-group.custom-form
+            label.form-label Name
+            input.form-control(type="text", name="first_name", placeholder="John Smith", required=capture_field['first_name'] ? true : false )
+          .form-group.custom-form
+            label.form-label Email
+            input.form-control(type="email", name="email", placeholder="Johnsmith@gmail.com", required=capture_field['email'] ? true : false)
+          .form-group.custom-form
+            label.form-label Phone
+            input.form-control.phone-info(type="tel", name="cell_phone", placeholder="***-***-****", required=capture_field['cell_phone'] ? true : false)
+          input(type="hidden", name="user", value=`${user._id}`)
+          input(type="hidden", name="video", value=`${video._id}`)
+          p.privacy-link
+            | Please read our 
+            a(href='https://crmgrow.com/privacy.html') Privacy Policy
+            |  before submitting.
+          button.btn.btn-lg.btn-primary.submit-btn(type="submit") Submit
+    .modal-content.p-4.thank-content.text-center
+      .modal-header.border-bottom-0.pb-0
+        h3.modal-title.border-bottom-0.py-0 Thank you! Your info has been processed.
+      .modal-body
+        p Please check the button to view the site and find out how eXp can help you grow!
+      .modal-footer.border-top-0.pt-0
+        button.btn.btn-lg.d-block.text-white.w-100#thank-btn View Site
+
+input#video-duration(type='hidden', value=`${video.duration/1000}`)
+input#activity(type='hidden')
+input#contact(type='hidden')
+input#user(type='hidden', value=`${user._id}`)
+input#video(type='hidden', value=`${video._id}`)
+input#showable(type='hidden', value=`${capture_dialog}`)
+input#delay(type='hidden', value=`${capture_delay}`)
+script(type='text/javascript', src='./assets/js/jquery.js')
+script(type='text/javascript', src='./assets/js/dropdown.js')
+script(type='text/javascript', src='./assets/js/cleave.min.js')
+script(type='text/javascript', src='./assets/js/video.js')
+script(type='text/javascript', src='./theme/core/lead_video.js')

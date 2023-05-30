@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webninar Invitation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <style>
+        .email-container {
+            max-width: 800px;
+            table-layout: fixed;
+        }
+        .invite-user {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: Arial;
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .invite-time {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: 'Arial';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .title {
+            color: #101336;
+            font-family: Arial;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 32px;
+            padding-bottom: 10px;
+        }
+        .description {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 24px;
+            padding-bottom: 20px;
+        }
+        .button-join {
+            display: block;
+            width: 250px;
+            padding: 10px;
+            border: 0;
+            border-radius: 3px;
+            background-color: #0A2EF4;
+            color: #FFFFFF;
+            font-family: 'Nunito';
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            line-height: 22px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+        }
+        .footer-text {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+    </style>
+</head>
+<body bgcolor="#f8f8fd" style="margin: 0;">
+    <table class="email-container" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding-top: 56px; padding-bottom: 40px;">
+                                    <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-40px.png" width="228" height="37">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 50px; padding-right: 50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-bottom: 10px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="invite-user">
+                                                                    <span>
+                                                                        Hi {{user_name}},
+                                                                    </span>
+                                                                </td>
+                                                                <td align="right" class="invite-time">
+                                                                    <span>
+                                                                        {{created_at}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title">
+                                                   You have been invited Live "how to use" crmgrow webinar
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="description">
+                                                    <p>Thank you for signing up for CRMGROW, your business and support is appreciated!</p>
+                                                    <p>Every Tuesday at 1pm CST we host a deep dive live demo, where one of our experts goes through how to use the software, best practices, and Q&A. Please register to join by,</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom:40px;">
+                                                    <a href="{{webinar_link}}" class="button-join">Join</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#f8f8fd" style="padding-left:50px;padding-right:50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-top: 40px; padding-bottom: 20px;">
+                                                    <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-24px.png" width="142" height="23">
+                                                </td>
+                                            </tr>
+                                            <!-- <tr>
+                                                <td style="padding-bottom: 16px;">
+                                                    <p class="footer-text">
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                    </p>
+                                                </td>
+                                            </tr> -->
+                                            <tr>
+                                                <td style="padding-bottom: 51px;">
+                                                    <p class="footer-text">
+                                                        All rights reserved.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

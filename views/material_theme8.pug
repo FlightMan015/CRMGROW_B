@@ -1,0 +1,154 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title #{user.user_name}
+  base(href='/')
+  link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+  meta(property='og:title', content=`${material.title||''}`)
+  meta(property='og:description', content=`${material.description||''}`)
+  meta(property='og:image:width', content='600')
+  meta(property='og:image:height', content='300')
+  meta(property='og:image', content=`${material.site_image || material.thumbnail || material.preview||''}`)
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='./theme/css/bootstrap.min.css')
+  //- Font Import
+  link(href='https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap', rel='stylesheet')
+  //- Plugin Style Import
+  link(href='./theme/plugins/plyr/plyr.css', rel='stylesheet')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/simple-lightbox/simple-lightbox.min.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/slick-carousel/slick/slick.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/slick-carousel/slick/slick-theme.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/pdf/flipbook.style.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/pdf/font-awesome.css')
+  //- Theme Main Style Import
+  link(rel='stylesheet', href='./theme/css/theme2.css')
+  //- Widget Styles Import
+  link(rel='stylesheet', href='./theme/css/widget.css')
+  //- Basic JS lib import
+  script(src='./theme/js/jquery.min.js')
+  script(src='./theme/js/popper.min.js')
+  script(src='./theme/js/bootstrap.min.js')
+  script(src='https://kit.fontawesome.com/a076d05399.js')
+  script(type='text/javascript', src='/socket.io/socket.io.js')
+  script(type='text/javascript', src='./theme/plugins/galleria/galleria.min.js')
+  script(type='text/javascript').
+    var config = !{JSON.stringify(material)};
+header
+  .profile.container.cs-container
+    .avatar-social
+      img.avatar(src=`${ user.picture_profile || 'theme/images/avatar.jpeg'}`)
+      .name-socials
+        .name #{user.user_name}
+        .socials.d-flex
+          a(class=social_link['facebook']?'':'d-none' href=social_link['facebook'] target='_blank')
+            i.i-icon.i-facebook
+          a(class=social_link['twitter']?'':'d-none' href=social_link['twitter'] target='_blank')
+            i.i-icon.i-twitter
+          a(class=social_link['linkedin']?'':'d-none' href=social_link['linkedin'] target='_blank')
+            i.i-icon.i-linkedin
+    .contact-info
+      .phone-info
+        img.icon(src='./theme/icons/phone.png')
+        span #{user.cell_phone}
+      .email-info
+        img.icon(src='./theme/icons/envelope.png')
+        span #{user.email}
+.container
+  .avatar-social.sm-profile
+    img.avatar(src=`${ user.picture_profile || 'theme/images/avatar.jpeg'}`)
+    .name-socials
+      .name #{user.user_name}
+      .socials.d-flex
+        a(class=social_link['facebook']?'':'d-none' href=social_link['facebook'] target='_blank')
+          i.i-icon.i-facebook
+        a(class=social_link['twitter']?'':'d-none' href=social_link['twitter'] target='_blank')
+          i.i-icon.i-twitter
+        a(class=social_link['linkedin']?'':'d-none' href=social_link['linkedin'] target='_blank')
+          i.i-icon.i-linkedin
+section.material-section
+  .container.cs-container
+    .md-content
+      h1.material-title.text-center.mb-1
+        | #{material.title}
+      p.material-description.text-center
+        != material.description
+    .row.material-profile-wrapper
+      .material-wrapper.mx-2
+        if material_type === 'video'
+          .video-player-wrapper
+            if material.type === 'youtube'
+              div#player(data-plyr-provider=`${material.type}` data-plyr-embed-id=`${material.url}`)
+            else if material.type === 'vimeo'
+              if material.url.startsWith('https://vimeo.com')
+                div#player(data-plyr-provider=`${material.type}` data-plyr-embed-id=`${material.url}`)
+              else  
+                div#player(data-plyr-provider=`${material.type}`)
+                  iframe(src=`${material.url}`)
+            else 
+              if !material.is_private
+                video#player(poster=`${material.thumbnail}`, controls, name="media")
+                  source(src=`${material.url}`, type=`video/mp4`)
+              else
+                if !material.is_stream
+                  video#player(poster=`${material.thumbnail}`, controls, name="media")
+                    source(src=`${material.converted_url}`, type=`video/mp4`)
+                else
+                  video#player(poster=`${material.thumbnail}`, controls, name="media")
+            .watched-time
+              | 00:00
+        if material_type === 'image'
+          .gallery-wrapper
+            #galleria
+              each url in material.url
+                a(href=url)
+                  img(src=url)
+            #gallery-container.d-none
+              each url in material.url
+                a(href=url)
+                  img(src=url)
+        if material_type === 'pdf'
+          .pdf-wrapper
+            #pdf-container
+              img(src=material.preview)
+            input#pdfpath(type="hidden" value=material.url)
+if setting.highlights && setting.highlights.length 
+  .highlights-section
+    h3.text-center Company Highlights
+    .container.cs-container.highlights-slider
+      .highlights
+        each highlight in setting.highlights
+          .highlight-item
+            .highlight-item-wrapper
+              img(src=highlight)
+if material_type === 'video'
+  input#duration(type='hidden', value=`${material.duration/1000}`)
+if material_type === 'image'
+  input#total(type='hidden', value=`${material.url.length}`)
+input#activity(type='hidden', value=`${activity}`)
+input#contact(type='hidden', value=`${contact}`)
+input#user(type='hidden', value=`${user._id}`)
+input#material(type='hidden', value=`${material._id}`)
+input#material-start(type='hidden', value=`${material_start}`)
+//- Widget JS
+script(type='text/javascript', src='./theme/core/widget_v2.js')
+//- Theme JS
+script(src='theme/plugins/slick-carousel/slick/slick.min.js')
+script(src='theme/theme-js/theme1.js')
+//- Video Track JS
+if material_type === 'video'
+  script(type='text/javascript', src='https://cdn.jsdelivr.net/npm/hls.js@latest')
+  script(src='theme/plugins/plyr/plyr.min.js')
+  script(type='text/javascript', src='./theme/core/track_video_v2.js')
+if material_type === 'image'
+  //- Image Track JS
+  script(type='text/javascript', src='./theme/core/track_image_v2.js')
+  //- Image Materials Plugin
+  script(type='text/javascript', src='./theme/plugins/simple-lightbox/simple-lightbox.js')
+  script.
+    var lightbox = new SimpleLightbox('#gallery-container a', {
+    /* options */
+    });
+//- PDF Track JS
+if material_type === 'pdf'
+  script(type='text/javascript', src='./theme/plugins/pdf/flipbook.js')
+  script(type='text/javascript', src='./theme/core/track_pdf_v2.js')

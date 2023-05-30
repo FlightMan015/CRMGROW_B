@@ -1,0 +1,29 @@
+doctype html
+head
+  title crmgrow
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  base(href='/')
+  link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+  meta(property='og:title', content=`crmgrow: Google Login`)
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  meta(name='google-signin-client_id' content='630484366982-m6e66b06vlo0g6ebg9h2q5t7nrk2rimr.apps.googleusercontent.com')
+  link(rel='stylesheet', href='./theme/css/bootstrap.min.css')
+  //- Font Import
+  link(href='https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap', rel='stylesheet')
+  //- Basic JS lib import
+  script(src='./theme/js/jquery.min.js')
+  script(src='./theme/js/popper.min.js')
+  script(src='./theme/js/qs.js')
+body.d-flex.align-items-center.flex-column(style="height: 50vh; margin-top: 150px;")
+  //- .spinner-border.text-warning(role='status', style="width: 5rem; height: 5rem; border-width: 0.5rem;")
+  //-   span.sr-only 
+  //- #signinButton.mt-4.px-4(style="font-size: 20px;border-radius: 6px;border: 1px solid gainsboro;display: inline-block;padding: 10px;text-transform: capitalize;")
+  //-   | Signing in with #{type}
+  a#redirect(style="display: none;", href=`${url}`)
+  //- input(type="hidden" id="social_type" value=`${type}`)
+//- Theme JS
+script(src='./theme/core/auth.js')
+script(src='https://secure.aadcdn.microsoftonline-p.com/lib/0.1.7/js/msal.min.js')
+if type === 'google'
+  script(src='https://apis.google.com/js/platform.js?onload=start', async, defer)

@@ -1,0 +1,60 @@
+doctype html
+head
+  title crmgrow
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  base(href='/')
+  link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+  meta(property='og:title', content=`crmgrow: Google Login`)
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  meta(name='google-signin-client_id' content='630484366982-m6e66b06vlo0g6ebg9h2q5t7nrk2rimr.apps.googleusercontent.com')
+  link(rel='stylesheet', href='./theme/css/bootstrap.min.css')
+  //- Font Import
+  link(href='https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap', rel='stylesheet')
+  //- Basic JS lib import
+  script(src='./theme/js/jquery.min.js')
+  script(src='./theme/js/popper.min.js')
+  script(src='./theme/js/qs.js')
+  style(type='text/css').
+    body {
+    text-align: center;
+    padding-top: 50px;
+    }
+    .logo img {
+    height: 40px;
+    margin-top: 60px;
+    }
+    .logo span {
+    font-size: 32px;
+    font-weight: bold;
+    }
+    .status {
+    margin-top: 30px;
+    font-size: 36px;
+    font-weight: bold;
+    }
+    .status a {
+      font-size: 18px;
+    }
+
+body
+  .logo
+    img(src="./assets/images/crmgrow-logo.svg")
+  //- .status.progressing
+  //-   | Signing in to your account via 
+  //-   span.type
+  //-     | #{type}
+  .success.status.d-none
+    | Have fun using the crmgrow recording application
+  .error.status.d-none
+    span.d-block
+      | Your sign in is failed. Please try again.
+    a.btn.btn-primary.font-weight-bold.text-white.px-5.py-2
+      | Try again
+  a.openApp(href="crmrecord://")
+  //- input(type="hidden" id="social_type" value=`${type}`)
+  input(type="hidden" id="status" value=`${status}`)
+  input(type="hidden" id="error" value=`${error}`)
+  input(type="hidden" id="source" value=`${source || ''}`)
+  input(type="hidden" id="data" value=`${JSON.stringify(data)}`)
+script(src='./theme/core/auth_callback.js')

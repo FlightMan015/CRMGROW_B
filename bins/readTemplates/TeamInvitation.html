@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Invitation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <style>
+        .email-container {
+            max-width: 800px;
+            table-layout: fixed;
+        }
+        .invite-user {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: Arial;
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .invite-time {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: 'Arial';
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 30px;
+        }
+        .invitation-description {
+            color: #101336;
+            font-family: Arial;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 32px;
+            padding-bottom: 35px;
+            margin-top: 10px;
+            display: block;
+        }
+        .invitation-detail {
+            opacity: 0.5;
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .invitation-step {
+            color: #101336;
+            font-family: 'Nunito';
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 24px;
+            padding-bottom: 2px;
+        }
+        .invitation-comment {
+            color: #101336;
+            font-family: Arial;
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 18px; 
+            padding-bottom: 10px;
+        }
+        a {
+            color: #0000FF;
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 18px;
+            text-decoration: none;
+        }
+        .button {
+            width: 90px;
+            height: 40px;
+            border: 0;
+            border-radius: 3px;
+            background-color: #0000FF;
+            color: #ffffff !important;
+            font-family: 'Nunito';
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            line-height: 18px;
+            padding: 10px;
+        }
+        .btn-redirect {
+            background-color: #ffffff;
+            border: 1px solid #0000ff;
+            border-radius: 3px;
+            color: #0000ff;
+            font-family: 'Nunito';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            padding: 5px 10px;
+            text-align: center;
+        }
+        .td-facebook {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #eaeaf0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 15px 0 5px;
+        }
+        .btn-facebook {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .footer-terms {
+            color: #0000ff;
+            font-family: 'Nunito';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 22px;
+            padding: 0 8px;
+            border-left: 1px solid #eaeaf0;
+            border-right: 1px solid #eaeaf0;
+            margin: 0 8px;
+        }
+        p {
+            margin: 0;
+        }
+        a {
+            color: #0000ff;
+            font-size: 14px;
+            height: 30px;
+            font-family: 'Arial';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+            text-decoration: none;
+        }
+
+        a img {
+            margin-top: 5px;
+        }
+        hr {
+            border: 1px solid #eaeaf0;
+            margin: 10px 0;
+        }
+        @media screen and (max-width: 575px) {
+            .footer-terms {
+                font-size: 12px;
+            }
+            .footer-text, .footer-link{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body bgcolor="#f8f8fd" style="margin: 0;">
+    <table class="email-container" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding-top: 56px; padding-bottom: 40px;">
+                                    <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-40px.png" width="228" height="37" alt="logo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 50px; padding-right: 50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="invite-user">
+                                                                    <span>
+                                                                        Welcome {{user_name}},
+                                                                    </span>
+                                                                </td>
+                                                                <td align="right" class="invite-time">
+                                                                    <span>
+                                                                        {{created_at}}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="invitation-description">
+                                                    You have been added to <span style="color: #0000FF;">{{team_name}}</span> team
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="invitation-detail">
+                                                    TO CHECK YOUR NEW TEAM
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="invitation-step">
+                                                    1. Login to your CRMgrow account
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="invitation-comment">
+                                                    <span style="opacity: 0.64;">Go to website or </span><a href="{{site_url}}">click here</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="invitation-step">
+                                                    2.Go to your Teams
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="invitation-comment">
+                                                    <span style="opacity: 0.64;">Main option on the left menu</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="invitation-step" style="padding-top: 10px; padding-bottom: 20px;">
+                                                    or
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 28px;">
+                                                    <a class="button" href="{{team_url}}">Click here</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#f8f8fd" style="padding-left: 50px; padding-right: 50px; padding-bottom: 50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="padding-top: 40px">
+                                                            <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-24px.png" width="142" height="23">
+                                                        </td>
+                                                        <td align="right" style="padding-top: 40px">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="footer-text" style="color: #0000ff;">
+                                                                        Follow us on
+                                                                    </td>
+                                                                    <td class="td-facebook">
+                                                                        <a class="btn-facebook" href="{{facebook_url}}" target="_blank"><img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/facebook.png" alt="logo"></a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a class="btn-redirect" href="{{login_url}}">
+                                                                            Redirect to login
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <hr />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="footer-text">
+                                                            @ 2021 All rights reserved.
+                                                        </td>
+                                                        <td class="footer-link" align="right">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <a href="{{terms_url}}" class="footer-terms" style="color:#0000ff;">Terms & Conditions</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="{{privacy_url}}" class="footer-terms" style="color:#0000ff;">Privacy Policy</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="{{unsubscription_url}}" class="footer-text" style="opacity:0.5;font-size:12px;">Unsubscribe</a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

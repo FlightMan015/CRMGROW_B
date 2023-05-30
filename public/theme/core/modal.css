@@ -1,0 +1,124 @@
+
+body.is_protected {
+  overflow: hidden;
+}
+body.is_protected > *:not(.modal) {
+  filter: blur(10px);
+}
+.modal-backdrop {
+  opacity: .6;
+  z-index: 9001;
+}
+#myModal{
+  flex-direction: column;
+  justify-content: center;
+  z-index: 9002;
+}
+@media screen and (min-width: 620px) {
+  #myModal .modal-dialog {
+      max-width: 600px;
+  }
+}
+
+.modal.show {
+  display: flex!important;
+}
+
+.form-group.custom-form {
+  border: 1px solid gainsboro;
+  border-radius: 4px;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-group.custom-form .form-label {
+  position: absolute;
+  background: white;
+  padding: 2px 6px;
+  top: 0px;
+  left: 15px;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+.form-group.custom-form .form-control {
+  padding-top: 12px;
+  height: 50px;
+  border: none !important;
+}
+
+#myModal .submit-btn {
+  border-radius: 25px;
+  padding: 8px 40px;
+  background-color: #2a6ae4;
+}
+#myModal .submit-btn.loading {
+  pointer-events: none;
+}
+#myModal:not(.thank-step) .thank-content {
+  display: none;
+}
+#myModal.thank-step .thank-content {
+  display: block
+}
+#myModal.thank-step .info-step {
+  display: none;
+}
+#thank-btn {
+  border-radius: 25px;
+  padding: 8px 40px;
+  background-color: #2a6ae4;
+}
+.modal-backdrop:not(.show) {
+  width: 0px;
+}
+
+@media screen and (max-width: 450px) {
+  #myModal .modal-content {
+      padding: 8px!important;
+  }
+  #myModal .modal-header h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+  }
+}
+.privacy-link {
+  font-size: .7rem;
+}
+
+.quick-video-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.quick-video-wrapper .volume-control {
+  outline: none!important;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  background: white;
+  padding: 5px;
+  font-size: 12px;
+  animation: shadow-pulse 2s infinite;
+  border-radius: 50%;
+  border: 3px solid gray;
+}
+
+.quick-video-wrapper .volume-control img {
+  width: 30px;
+  height: 30px;
+}
+
+@keyframes shadow-pulse{
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

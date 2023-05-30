@@ -1,0 +1,268 @@
+head
+  meta(charset='utf-8')
+  title #{user.user_name}
+  base(href='/')
+  link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+  meta(property='og:title', content=`${material.title||''}`)
+  meta(property='og:description', content=`${material.description||''}`)
+  meta(property='og:image:width', content='600')
+  meta(property='og:image:height', content='300')
+  meta(property='og:image', content=`${material.site_image || material.thumbnail || material.preview||''}`)
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='./theme/css/bootstrap.min.css')
+  //- Font Import
+  link(href='https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap', rel='stylesheet')
+  //- Plugin Style Import
+  link(href='./theme/plugins/plyr/plyr.css', rel='stylesheet')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/simple-lightbox/simple-lightbox.min.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/pdf/flipbook.style.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/pdf/font-awesome.css')
+  //- Theme Main Style Import
+  link(rel='stylesheet', href='./theme/css/theme3.css')
+  link(rel='stylesheet', href='./theme/css/header_footer.css')
+  //- Widget Styles Import
+  link(rel='stylesheet', href='./theme/css/widget.css')
+  //- Demo Page Styles Import
+  link(rel='stylesheet', href='./theme/css/demo_template.css')
+  //- Basic JS lib import
+  script(src='./theme/js/jquery.min.js')
+  script(src='./theme/js/popper.min.js')
+  script(src='./theme/js/bootstrap.min.js')
+  script(src='./theme/js/header_footer.js')
+  script(src='https://kit.fontawesome.com/a076d05399.js')
+  script(type='text/javascript', src='/socket.io/socket.io.js')
+  script(type='text/javascript', src='./theme/plugins/galleria/galleria.min.js')
+  script(type='text/javascript').
+    var config = !{JSON.stringify(material)};
+doctype html
+header.header
+  .header-contents
+    a.logo(href='https://crmgrow.com/index.html')
+      img.logo-img(src='./theme/images/logo_blue.svg' alt='logo')
+    input#menu-btn.menu-btn(type='checkbox')
+    label.menu-icon(for='menu-btn')
+      span.navicon
+    ul.menu
+      li
+        a(href='https://crmgrow.com/index.html') Tour
+      li
+        a(href='https://crmgrow.com/pricing.html') Pricing
+      li
+        a(href='https://crmgrow.com/pricing.html#faqs') FAQ
+      li
+        a(href='https://crmgrow.com/reviews.html') Reviews
+      li
+        a(href='mailto:support@crmgrow.com') Contact
+      li.button-item
+        a.btn.btn-secondary(href='https://app.crmgrow.com/login') Login
+      li
+        a.btn.btn-primary(href='https://app.crmgrow.com/signup') Try it free
+section.main-container
+  .material-section
+    .container.cs-container
+      div
+        h1.material-title.text-center.mb-1
+          | #{material.title}
+        p.material-description.text-center
+          != material.description
+      .row.material-profile-wrapper
+        .material-wrapper.mx-2
+          if material_type === 'video'
+            .video-player-wrapper
+              if material.type === 'youtube' || material.type === 'vimeo'
+                div#player(data-plyr-provider=`${material.type}` data-plyr-embed-id=`${material.url}`)
+              else 
+                if !material.is_private
+                  video#player(poster=`${material.thumbnail}`, controls, name="media")
+                    source(src=`${material.url}`, type=`video/mp4`)
+                else
+                  if !material.is_stream
+                    video#player(poster=`${material.thumbnail}`, controls, name="media")
+                      source(src=`${material.converted_url}`, type=`video/mp4`)
+                  else
+                    video#player(poster=`${material.thumbnail}`, controls, name="media")
+              .watched-time
+                | 00:00
+              if material.converted === 'progress'
+                div.convertStatus
+                  div.progressBar.progress
+                    div.progress-bar.progress-bar-striped.progress-bar-animated.bg-secondary
+          if material_type === 'image'
+            .gallery-wrapper
+              #galleria
+                each url in material.url
+                  a(href=url)
+                    img(src=url)
+              #gallery-container.d-none
+                each url in material.url
+                  a(href=url)
+                    img(src=url)
+          if material_type === 'pdf'
+            .pdf-wrapper
+              #pdf-container
+                img(src=material.preview)
+              input#pdfpath(type="hidden" value=material.url)
+  if calendly
+      iframe.calendly(width='100%', height='100%', frameBorder="0", src=calendly)
+section.ready-section
+  img.for-desktop(src='./theme/images/ready_started.svg' alt='ready')
+  img.for-mobile(src='./theme/images/ready_start_mobile.svg' alt='ready')
+  .input-email-wrapper
+    div
+      input#free-email-1(type='email' name='free-email' placeholder='Enter your email...')
+      #signup-email-error-1.error-message Please input a valid email
+    #signup-button-1.btn.btn-primary Try it free
+  .go-demo
+    | Or you can
+    a
+      span Get a demo
+footer
+  .section-wrapper
+    .left-panel
+      a(href='https://crmgrow.com/index.html')
+        img.logo-img(src='./theme/images/logo-white.svg' alt='logo')
+      p.title-text @ 2021 crmgrow
+    .right-panel
+      .category
+        p.title-text Product
+        a(href='https://crmgrow.com/index.html')
+          p.sub-title-text.first Tour
+        a(href='https://crmgrow.com/pricing.html')
+          p.sub-title-text Pricing
+        a(href='https://crmgrow.com/pricing.html#faqs')
+          p.sub-title-text FAQ
+        a(href='https://crmgrow.com/reviews.html')
+          p.sub-title-text Reviews
+        a(href='mailto:support@crmgrow.com')
+          p.sub-title-text Contact
+      .category
+        p.title-text Legal
+        a(href='https://crmgrow.com/privacy.html' target='_blank')
+          p.sub-title-text.first Privacy
+        a(href='https://crmgrow.com/terms_of_service.html' target='_blank')
+          p.sub-title-text Terms
+        a(href='https://crmgrow.com/privacy.html#t' target='_blank')
+          p.sub-title-text CA Privacy Rights
+      .category
+        p.title-text Social
+        a
+          p.sub-title-text.first Facebook
+        a
+          p.sub-title-text Twitter
+        a
+          p.sub-title-text LinkedIn
+      .category
+        p.title-text Downloads
+        a(href='https://crmgrow.com/download.html' target='_blank')
+          p.sub-title-text.first Desktop App
+        a(href='https://crmgrow.com/download.html' target='_blank')
+          p.sub-title-text.first Chrome Extension
+        a(href='https://crmgrow.com/mobile.html' target='_blank')
+          p.sub-title-text.first Mobile Apps
+      .category
+        p.title-text Support
+        a(href='mailto:support@crmgrow.com')
+          p.sub-title-text.first support@crmgrow.com
+
+if material_type === 'video'
+  input#duration(type='hidden', value=`${material.duration/1000}`)
+if material_type === 'image'
+  input#total(type='hidden', value=`${material.url.length}`)
+input#activity(type='hidden', value=`${activity}`)
+input#contact(type='hidden', value=`${contact}`)
+input#user(type='hidden', value=`${user._id}`)
+input#material(type='hidden', value=`${material._id}`)
+input#capture-dialog(type='hidden', value=`${capture_dialog}`)
+input#capture-delay(type='hidden', value=`${capture_delay}`)
+#leadModal.modal.fade(role="dialog")
+  .modal-dialog
+    .modal-content.p-4.info-step
+      //- if setting.intro_video
+      //-   div.quick-video-wrapper
+      //-     video.intro_video(autoplay=true, loop=true, preload="metadata", playsinline=true, muted)
+      //-       source(src=setting.intro_video, type="video/mp4")
+      //-     button.volume-control
+      //-       img(src='./theme/icons/unmute.png')
+      .modal-body
+        form#info-form
+          //- if capture_field[0]
+          //-   .form-group.custom-form
+          //-     label.form-label Name
+          //-     input.form-control(type="text", name="first_name", placeholder="John Smith", required=capture_field['first_name'] ? true : false )
+          //- if capture_field['email']
+          //-   .form-group.custom-form
+          //-     label.form-label Email
+          //-     input.form-control(type="email", name="email", placeholder="Johnsmith@gmail.com", required=capture_field['email'] ? true : false)
+          //- if capture_field['cell_phone']
+          //-   .form-group.custom-form
+          //-     label.form-label Phone
+          //-     input.form-control.phone-info(type="tel", name="cell_phone", placeholder="***-***-****", required=capture_field['cell_phone'] ? true : false)
+          each field in capture_field
+            if field['name'] == 'Name'
+              .form-group.custom-form
+                label.form-label #{field.name}
+                input.form-control(type="text", name="first_name", placeholder="John Smith", required=field['required'] ? true : false )
+            else if field['name'] == 'Email'
+              .form-group.custom-form
+                label.form-label #{field.name}
+                input.form-control(type="email", name="email", placeholder="Johnsmith@gmail.com", required=field['required'] ? true : false)
+            else if field['name'] == 'Phone'
+              .form-group.custom-form
+                label.form-label #{field.name}
+                input.form-control.phone-info(type="tel", name="cell_phone", placeholder="***-***-****", required=field['required'] ? true : false)
+            else
+              .form-group.custom-form
+                label.form-label #{field.name}
+                if field['type'] == 'text'
+                  input.form-control(type="text", name=field['match_field'] ? field['match_field'] : field.name, placeholder=field['placeholder'], required=field['required'] ? true : false)
+                if field['type'] == 'email'
+                  input.form-control(type="email", name=field['match_field'] ? field['match_field'] : field.name, placeholder=field['placeholder'], required=field['required'] ? true : false)
+                if field['type'] == 'phone'
+                  input.form-control.phone-info(type="tel", name=field['match_field'] ? field['match_field'] : field.name, placeholder=field['placeholder'], required=field['required'] ? true : false)
+                if field['type'] == 'dropdown'
+                  select.form-control(name=field['match_field'] ? field['match_field'] : field.name, required=field['required'] ? true : false)
+                    option(value="")
+                      | None
+                    if field.options
+                      for optionItem in field.options
+                        option(value=optionItem.value)
+                          | #{optionItem.label}
+          input(type="hidden", name="user", value=`${user._id}`)
+          input(type="hidden", name=material_type, value=`${material._id}`)
+          input(type="hidden", name="tags", value=capture_tags)
+          input(type="hidden", name="automation", value=capture_automation)
+          p.privacy-link
+            | Please read our 
+            a(href='https://crmgrow.com/privacy.html') Privacy Policy
+            |  before submitting.
+          button.btn.btn-lg.btn-primary.submit-btn(type="submit") Submit
+    .modal-content.p-4.thank-content.text-center
+      .modal-header.border-bottom-0.pb-0
+        h3.modal-title.border-bottom-0.py-0 Thank you! Your info has been processed.
+      .modal-body
+        p Please check the button to view the site and find out how eXp can help you grow!
+      .modal-footer.border-top-0.pt-0
+        button.btn.btn-lg.d-block.text-white.w-100#thank-btn View Site
+//- Widget JS
+script(type='text/javascript', src='./theme/core/widget_v2.js')
+//- Video Track JS
+if material_type === 'video'
+  script(type='text/javascript', src='https://cdn.jsdelivr.net/npm/hls.js@latest')
+  script(src='theme/plugins/plyr/plyr.min.js')
+  script(type='text/javascript', src='./theme/core/lead_video_v2.js')
+if material_type === 'image'
+  //- Image Track JS
+  script(type='text/javascript', src='./theme/core/lead_image_v2.js')
+  //- Image Materials Plugin
+  script(type='text/javascript', src='./theme/plugins/simple-lightbox/simple-lightbox.js')
+  script.
+    var lightbox = new SimpleLightbox('#gallery-container a', {
+    /* options */
+    });
+//- PDF Track JS
+if material_type === 'pdf'
+  script(type='text/javascript', src='./theme/plugins/pdf/flipbook.js')
+  script(type='text/javascript', src='./theme/core/lead_pdf_v2.js')
+  script(async='' src='https://r.wdfl.co/rw.js' data-rewardful='88e66d')
+  script(id='io.birdseed.script-tag' type='text/javascript' src='https://app.birdseed.io/widget.js')
+  #birdseed-widget-container(data-token='78516726b2ddabb28c3d8a3765aab30c')

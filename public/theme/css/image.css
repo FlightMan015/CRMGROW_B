@@ -1,0 +1,26 @@
+.gallery img.single {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: auto;
+  max-height: 250px;
+  object-fit: contain;
+  background: gainsboro;
+}
+
+.gallery img:not(.single) {
+  width: 240px;
+  height: 180px;
+  margin: 5px;
+  object-fit: cover;
+}
+
+.sl-overlay {
+  background-color: black!important;
+}
+
+.theme1-template .profile-logo-block  {
+  position: sticky;
+  top: 140px;
+  height: calc(100vh - 140px);
+}

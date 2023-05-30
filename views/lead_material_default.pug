@@ -1,0 +1,192 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title #{user.user_name}
+  base(href='/')
+  meta(name='viewport', content='width=device-width, initial-scale=1, minimun-scale=1.0, maximum-scale=1.0')
+  link(rel='shortcut icon', type='image/x-icon', href='./assets/icons/favicon.ico')
+  meta(property='og:title', content=`${material.title||''}`)
+  meta(property='og:description', content=`${material.description||''}`)
+  meta(property='og:image:width', content='600')
+  meta(property='og:image:height', content='300')
+  meta(property='og:image', content=`${material.site_image || material.thumbnail || material.preview||''}`)
+  //- Basic Style
+  link(rel='stylesheet', type='text/css', href='./theme/css/bootstrap.min.css')
+  //- Plugin Style Import
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/plyr/plyr.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/simple-lightbox/simple-lightbox.min.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/pdf/flipbook.style.css')
+  link(rel='stylesheet', type='text/css', href='./theme/plugins/pdf/font-awesome.css')
+  //- Theme main Style
+  link(rel='stylesheet', type='text/css', href='./theme/css/theme_default.css') 
+  //- Widget Style
+  link(rel='stylesheet', href='./theme/css/widget.css')
+  //- Basic JS lib import
+  script(src='./theme/js/jquery.min.js')
+  script(src='./theme/js/popper.min.js')
+  script(src='./theme/js/bootstrap.min.js')
+  script(type='text/javascript', src='./theme/js/dropdown.js')
+  script(type='text/javascript', src='/socket.io/socket.io.js')
+  script(src='https://kit.fontawesome.com/a076d05399.js')
+  script(type='text/javascript', src='./theme/plugins/galleria/galleria.min.js')
+.stick-bar.row
+  .col-lg-3.col-md-3.col-sm-3.col-xs-12.d-flex.justify-content-center.name-wrapper
+    .name(title=user.user_name) #{user.user_name}
+    .profile-bar
+        a.facebook(class=social_link['facebook']?'d-block':'d-none' href=social_link['facebook']) 
+          i.icon.icon-facebook
+        a.twitter(class=social_link['twitter']?'d-block':'d-none' href=social_link['twitter']) 
+          i.icon.icon-twitter
+        a.linkedin(class=social_link['linkedin']?'d-block':'d-none' href=social_link['linkedin']) 
+          i.icon.icon-linkedin
+  .col-lg-9.col-md-9.col-sm-9.contact-info-wrapper
+    .col-lg-4.col-md-4.phone
+      i.icon.icon-phone
+      a.cell_phone(href=`tel:${user.cell_phone}`) 
+        span #{user.cell_phone}
+    .col-lg-5.col-md-5.email
+      i.icon.icon-envelope
+      a.user-email(href=`mailto:${user.email}`) #{user.email}
+    .col-lg-3.col-md-3 
+      a.link(href=`${user.learn_more}`) Learn More
+  .dropdown.contact-info-dropdown
+    button.btn.dropdown-toggle(type="button", data-toggle="dropdown") Contact Me
+      i.icon.icon-down
+    .dropdown-menu
+      a.dropdown-item(href=`tel:${user.cell_phone}`) Call my phone
+      a.dropdown-item(href=`mailto:${user.email}`)  Email me
+      a.dropdown-item(href=`${user.learn_more}`) Learn more
+.view-container.container
+  if material_type === 'video'
+    .video-player-wrapper
+      .video-status-wrapper
+        .video-progressbar
+          .video-progress-inner
+      if material.type === 'youtube'
+        div#player(data-plyr-provider=`${material.type}` data-plyr-embed-id=`${material.url}`)
+      else if material.type === 'vimeo'
+        if material.url.startsWith('https://vimeo.com')
+          div#player(data-plyr-provider=`${material.type}` data-plyr-embed-id=`${material.url}`)
+        else  
+          div#player(data-plyr-provider=`${material.type}`)
+            iframe(src=`${material.url}`)
+      else 
+        video#player(poster=`${material.thumbnail}`, controls, name="media")
+          source(src=`${material.url}`, type=`video/mp4`)
+      if material.converted === 'progress'
+        div.convertStatus
+          div.progressBar.progress
+            div.progress-bar.progress-bar-striped.progress-bar-animated.bg-secondary
+  if material_type === 'image'
+    .gallery-wrapper
+      #galleria
+        each url in material.url
+          a(href=url)
+            img(src=url)
+      #gallery-container.d-none
+        each url in material.url
+          a(href=url)
+            img(src=url)
+  if material_type === 'pdf'
+    .pdf-wrapper
+      #pdf-container
+        img(src=material.preview)
+      input#pdfpath(type="hidden" value=material.url)
+  .description
+    .desc-title
+      | #{material.title}
+    .desc-content
+      !=material.description
+.footer
+  p.footer-desc.container
+   | The statements and opinions contained in this advertisement are solely those of the individual author and do not necessarily reflect the positions or opinions of eXp Realty, LLC, or its subsidiaries or affiliates (the “Company”). The Company does not assume any responsibility for, nor does it warrant the accuracy, completeness or quality of the information provided.
+if material_type === 'video'
+  input#duration(type='hidden', value=`${material.duration/1000}`)
+if material_type === 'image'
+  input#total(type='hidden', value=`${material.url.length}`)
+input#activity(type='hidden', value=`${activity}`)
+input#contact(type='hidden', value=`${contact}`)
+input#user(type='hidden', value=`${user._id}`)
+input#material(type='hidden', value=`${material._id}`)
+input#capture-dialog(type='hidden', value=`${capture_dialog}`)
+input#capture-delay(type='hidden', value=`${capture_delay}`)
+input#from-recording(type='hidden' value=`${from_recording}`)
+#leadModal.modal.fade(role="dialog")
+  .modal-dialog
+    .modal-content.p-4.info-step
+      if setting.intro_video
+        div.quick-video-wrapper
+          video.intro_video(autoplay=true, loop=true, preload="metadata", playsinline=true, muted)
+            source(src=setting.intro_video, type="video/mp4")
+          button.volume-control
+            img(src='./theme/icons/unmute.png')
+      .modal-body
+        form#info-form
+          each field in capture_field
+            if field['name'] == 'Name'
+              .form-group.custom-form
+                label.form-label #{field.name}
+                input.form-control(type="text", name="first_name", placeholder="John Smith", required=field['required'] ? true : false )
+            else if field['name'] == 'Email'
+              .form-group.custom-form
+                label.form-label #{field.name}
+                input.form-control(type="email", name="email", placeholder="Johnsmith@gmail.com", required=field['required'] ? true : false)
+            else if field['name'] == 'Phone'
+              .form-group.custom-form
+                label.form-label #{field.name}
+                input.form-control.phone-info(type="tel", name="cell_phone", placeholder="***-***-****", required=field['required'] ? true : false)
+            else
+              .form-group.custom-form
+                label.form-label #{field.name}
+                if field['type'] == 'text'
+                  input.form-control(type="text", name=field['match_field'] ? field['match_field'] : field.name, placeholder=field['placeholder'], required=field['required'] ? true : false)
+                if field['type'] == 'email'
+                  input.form-control(type="email", name=field['match_field'] ? field['match_field'] : field.name, placeholder=field['placeholder'], required=field['required'] ? true : false)
+                if field['type'] == 'phone'
+                  input.form-control.phone-info(type="tel", name=field['match_field'] ? field['match_field'] : field.name, placeholder=field['placeholder'], required=field['required'] ? true : false)
+                if field['type'] == 'dropdown'
+                  select.form-control(name=field['match_field'] ? field['match_field'] : field.name, required=field['required'] ? true : false)
+                    option(value="")
+                      | None
+                    if field.options
+                      for optionItem in field.options
+                        option(value=optionItem.value)
+                          | #{optionItem.label}
+          input(type="hidden", name="user", value=`${user._id}`)
+          input(type="hidden", name=material_type, value=`${material._id}`)
+          input(type="hidden", name="tags", value=capture_tags)
+          input(type="hidden", name="automation", value=capture_automation)
+          p.privacy-link
+            | Please read our 
+            a(href='https://crmgrow.com/privacy.html') Privacy Policy
+            |  before submitting.
+          button.btn.btn-lg.btn-primary.submit-btn(type="submit") Submit
+    .modal-content.p-4.thank-content.text-center
+      .modal-header.border-bottom-0.pb-0
+        h3.modal-title.border-bottom-0.py-0 Thank you! Your info has been processed.
+      .modal-body
+        p Please check the button to view the site and find out how eXp can help you grow!
+      .modal-footer.border-top-0.pt-0
+        button.btn.btn-lg.d-block.text-white.w-100#thank-btn View Site
+
+//- Widget JS
+script(type='text/javascript', src='./theme/core/widget_v2.js')
+//- Theme JS
+script(type='text/javascript', src='./theme/theme-js/default_theme.js')
+script(src='theme/core/redirect.js')
+//- Video Track JS
+if material_type === 'video'
+  script(src='theme/plugins/plyr/plyr.min.js')
+  script(type='text/javascript', src='./theme/core/lead_video_v2.js')
+//- Image Track JS
+if material_type === 'image'
+  script(type='text/javascript', src='./theme/core/lead_image_v2.js')
+  script(type='text/javascript', src='./theme/plugins/simple-lightbox/simple-lightbox.js')
+  script.
+    var lightbox = new SimpleLightbox('#gallery-container a', {
+    /* options */
+    });
+//- PDF track JS
+if material_type === 'pdf'
+  script(type='text/javascript', src='./theme/plugins/pdf/flipbook.js')
+  script(type='text/javascript', src='./theme/core/lead_pdf_v2.js')

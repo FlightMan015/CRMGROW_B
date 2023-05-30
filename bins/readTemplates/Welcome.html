@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome CRMGrow</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <style>
+        .email-container {
+            max-width: 800px;
+            table-layout: fixed;
+        }
+        .invite-user {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: Arial;
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .recording-video {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: Arial;
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .invite-time {
+            height: 30px;
+            opacity: 0.64;
+            color: #101336;
+            font-family: 'Arial';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .step-title {
+            height: 36px;
+            color: #101336;
+            font-family: 'Arial';
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 32px;
+        }
+        .btn-verify {
+            display: block;
+            background-color: #0000ff;
+            border: 1px solid #0000ff;
+            border-radius: 3px;
+            color: #ffffff!important;
+            font-family: 'Nunito';
+            font-size: 14px;
+            letter-spacing: 0;
+            text-align: center;
+            max-width: 120px;
+            padding: 10px 10px 0px 10px;
+        }
+        .account-detail {
+            border: 1px solid #eaeaf0;
+            border-radius: 3px;
+            padding: 10px;
+        }
+        .account-info {
+            height: 30px;
+            color: #101336;
+            font-family: 'Arial';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .footer-text {
+            color: #101336!important;
+            font-family: 'Nunito';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 22px;
+        }
+        .btn-redirect {
+            background-color: #ffffff;
+            border: 1px solid #0000ff;
+            border-radius: 3px;
+            color: #0000ff;
+            font-family: 'Nunito';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            padding: 5px 10px;
+            text-align: center;
+        }
+        .td-facebook {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #eaeaf0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 15px 0 5px;
+        }
+        .btn-facebook {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding-top: 6px;
+        }
+        .footer-terms {
+            color: #0000ff;
+            font-family: 'Nunito';
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 22px;
+            padding: 0 8px;
+            border-left: 1px solid #eaeaf0;
+            border-right: 1px solid #eaeaf0;
+            margin: 0 8px;
+        }
+        p {
+            margin: 0;
+        }
+        a {
+            color: #0000ff;
+            font-size: 14px;
+            height: 30px;
+            font-family: 'Arial';
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 22px;
+            text-decoration: none;
+        }
+        hr {
+            border: 1px solid #eaeaf0;
+            margin: 10px 0;
+        }
+        @media screen and (max-width: 575px) {
+            .footer-terms {
+                font-size: 12px;
+            }
+            .footer-text, .footer-link{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body bgcolor="#f8f8fd" style="margin: 0;">
+    <table class="email-container" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+        <tbody>
+            <tr>
+                <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td align="center" style="padding-top: 56px; padding-bottom: 40px;">
+                                    <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-40px.png" width="228" height="37" alt="logo">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 50px; padding-right: 50px; padding-bottom: 50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="invite-user">
+                                                                    Welcome {{user_name}},
+                                                                </td>
+                                                                <td align="right" class="invite-time">
+                                                                    {{created_at}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="invite-user" style="padding-top: 20px;">
+                                                                    Thanks for subscribing to Crmgrow! Here's how to get started:
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="step-title">
+                                                                    1.Verify your account
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="invite-user" style="padding-bottom: 10px;">
+                                                                    Do this by clicking the button below
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a class="btn-verify" href="{{verification_url}}" target="_blank">Verify my account</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="step-title">
+                                                                    2.Connect your email
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="invite-user" style="padding-bottom:10px;">
+                                                                    Connect your desired Gmail or Microsoft 365 email account and confirm the information in your profile is accurate
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{{connect_url}}" target="_blank">Connect in your account</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="step-title">
+                                                                    3.Upload your contact list
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding-bottom: 10px;">
+                                                                    <span class="invite-user">If you have contacts, you can upload them in bulk here. Here's a </span>
+                                                                    <a href="{{template_url}}" target="_blank">template</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{{import_url}}" target="_blank">Upload bulk contacts</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="step-title">
+                                                                    4.Register for weekly trainings
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="invite-user" style="padding-bottom: 10px;">
+                                                                    We go live and show you how to use the software in depth and conduct a Q&A.
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{{webinar_url}}" target="_blank">Register now</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <!-- <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="step-title">
+                                                                    5.Schedule a one on one training
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="invite-user" style="padding-bottom: 10px;">
+                                                                    One of our experts will train you over zoom. You can do so by <a href="{{oneonone_url}}" target="_blank">clicking here</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr> -->
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="step-title">
+                                                                    5.Watch the recording video
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="recording-video" style="padding-bottom: 10px;">
+                                                                    Here is one of our last webinar "how to use" the software recording.
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="{{recording_url}}" target="_blank">
+                                                                        <img src="{{recording_preview}}" alt="demo video">
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="step-title">
+                                                                    6.Your account details
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="invite-user" style="padding-bottom: 10px;">
+                                                                    Save the following account information
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="account-detail">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="account-info" style="width: 100px; font-weight: bold;">
+                                                                                    Email
+                                                                                </td>
+                                                                                <td class="account-info">
+                                                                                    {{user_email}}
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="account-info" style="width: 100px; font-weight: bold;">
+                                                                                    Password
+                                                                                </td>
+                                                                                <td class="account-info">
+                                                                                    {{password}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="account-info">
+                                                    Thank you for your business and support!
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="account-info" style="font-weight: bold; padding-top:20px;">
+                                                    Support Team
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#f8f8fd" style="padding-left: 50px; padding-right: 50px; padding-bottom: 50px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding-top: 40px">
+                                                                    <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-24px.png" width="142" height="23" alt="logo">
+                                                                </td>
+                                                                <td align="right" style="padding-top: 40px">
+                                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="footer-text" style="color: #0000ff;">
+                                                                                    Follow us on
+                                                                                </td>
+                                                                                <td class="td-facebook">
+                                                                                    <a class="btn-facebook" href="{{facebook_url}}" target="_blank"><img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/facebook.png" alt="facebook"></a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a class="btn-redirect" href="{{login_url}}">
+                                                                                        Redirect to login
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <hr />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="footer-text">
+                                                                    @ 2021 All rights reserved.
+                                                                </td>
+                                                                <td class="footer-link" align="right">
+                                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <a href="{{terms_url}}" class="footer-terms" style="color:#0000ff;">Terms & Conditions</a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="{{privacy_url}}" class="footer-terms" style="color:#0000ff;">Privacy Policy</a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="{{unsubscription_url}}" class="footer-text" style="opacity:0.5;font-size:12px;">Unsubscribe</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

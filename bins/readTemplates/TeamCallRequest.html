@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groupcall Invitation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+  <style>
+    .email-container {
+      max-width: 800px;
+      table-layout: fixed;
+    }
+    .invite-user {
+      height: 30px;
+      opacity: 0.64;
+      color: #101336;
+      font-family: Arial;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 30px;
+    }
+    .invite-time {
+      height: 30px;
+      opacity: 0.64;
+      color: #101336;
+      font-family: 'Arial';
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 30px;
+    }
+    .invite-body {
+      color: #101336;
+      font-family: Arial;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 30px;
+      padding-bottom: 35px;
+    }
+    .invite-title {
+      opacity: 0.5;
+      color: #101336;
+      font-family: 'Nunito';
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 22px;
+    }
+    .invite-subject {
+      color: #101336;
+      font-family: 'Nunito';
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 32px;
+      padding-bottom: 20px;
+    }
+    .invite-users {
+      color: #0000FF;
+      font-family: 'Nunito';
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 22px;
+      padding-left: 30px;
+      vertical-align: top;
+    }
+    .icon-user {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      font-size: 12px;
+      font-family: 'Nunito';
+      font-weight: normal;
+      border-radius: 50%;
+      color: #ffffff!important;
+      background-color: #0000FF;
+      letter-spacing: 0;
+      display: block;
+      text-align: center;
+      padding: 2px;
+    }
+    .invite-description {
+      width: 340px;
+      background-color: #EEEFF5;
+      color: #101336;
+      font-family: 'Nunito';
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 16px;
+      padding: 12px 16px 25px 12px;
+      border-radius: 3px;
+    }
+    .button-accept {
+      display: block;
+      background-color: #0000FF;
+      color: #FFFFFF!important;
+      font-family: 'Nunito';
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 22px;
+      text-decoration: none;
+      border-radius: 3px;
+      padding: 10px 0px;
+      text-align: center;
+      margin-top: 13px;
+    }
+    p {
+      margin: 0;
+    }
+    .footer-text {
+      color: #101336;
+      font-family: 'Nunito';
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 22px;
+    }
+  </style>
+</head>
+<body bgcolor="#f8f8fd" style="margin: 0;">
+  <table class="email-container" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+      <tr>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+              <tr>
+                <td align="center" style="padding-top: 56px; padding-bottom: 40px;">
+                  <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-40px.png" width="228" height="37">
+                </td>
+              </tr>
+              <tr>
+                  <td style="padding-left: 50px; padding-right: 50px;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tbody>
+                              <tr>
+                                  <td style="padding-bottom: 10px;">
+                                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                          <tbody>
+                                              <tr>
+                                                  <td class="invite-user">
+                                                      <span>
+                                                          Welcome {{leader_name}},
+                                                      </span>
+                                                  </td>
+                                                  <td align="right" class="invite-time">
+                                                      <span>
+                                                          {{created_at}}
+                                                      </span>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td class="invite-body">
+                                      Group Call Invitation!
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                          <tbody>
+                                              <tr>
+                                                  <td style="padding-bottom: 60px;">
+                                                      <table>
+                                                          <tbody>
+                                                              <tr>
+                                                                  <td class="invite-title">
+                                                                      SUBJECT
+                                                                  </td>
+                                                                  <td class="invite-title" style="padding-left: 30px">
+                                                                      ORGANIZER
+                                                                  </td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td class="invite-subject">
+                                                                  {{subject}}
+                                                                </td>
+                                                                <td class="invite-users" style="padding-bottom: 20px;">
+                                                                  <table>
+                                                                    <tbody>
+                                                                      {{organizer}}
+                                                                    </tbody>
+                                                                  </table>
+                                                                </td>
+                                                              </tr>
+                                                              <tr>
+                                                              <td class="invite-title" style="padding-bottom: 10px;">
+                                                                  DESCRIPTION
+                                                              </td>
+                                                                <td class="invite-title" style="padding-bottom: 10px; padding-left: 30px">
+                                                                  CONTACTS & GUESTS
+                                                                </td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td>
+                                                                  <div class="invite-description">{{description}}</div>
+                                                                  <a href="{{call_url}}" class="button-accept">Accept & select date on crmgrow platform</a>
+                                                                </td>
+                                                                <td class="invite-users">
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <!-- <tr>
+                                                                        <td>
+                                                                          <span class="icon-user">RB</label>
+                                                                        </td>
+                                                                        <td style="padding-left: 5px;">
+                                                                            Rafal Baran
+                                                                        </td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                          <td>
+                                                                              <span class="icon-user" style="margin-top: 10px;">TA</label>
+                                                                          </td>
+                                                                          <td style="padding-top: 10px; padding-left: 5px;">
+                                                                              Thomas Anderson
+                                                                          </td>
+                                                                      </tr> -->
+                                                                      {{guests}}
+                                                                    </tbody>
+                                                                  </table>
+                                                                </td>
+                                                              </tr>
+                                                          </tbody>
+                                                      </table>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </td>
+              </tr>
+              <tr>
+                  <td bgcolor="#f8f8fd" style="padding-left: 50px; padding-right: 50px;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tbody>
+                              <tr>
+                                  <td style="padding-top: 40px; padding-bottom: 20px;">
+                                      <img src="https://teamgrow.s3.us-east-2.amazonaws.com/ses/crmgrow-logo-24px.png" width="142" height="23">
+                                  </td>
+                              </tr>
+                              <!-- <tr>
+                                  <td style="padding-bottom: 16px;">
+                                      <p class="footer-text">
+                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                      </p>
+                                  </td>
+                              </tr> -->
+                              <tr>
+                                  <td style="padding-bottom: 51px;">
+                                      <p class="footer-text">
+                                          All rights reserved.
+                                      </p>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
